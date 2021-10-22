@@ -34,13 +34,27 @@ const lugar = new Lugar({
 })
 
 
-lugar.save()
-    .then(()=>{
-        console.log(lugar)
-        console.log('Lugar creado')
+
+Lugar.findOne()
+    .then(resultado=>{
+        console.log(resultado.nombre)
     })
     .catch(err=>console.log(err))
 
+    async function actualizar(){
+        try{
+            let lug= await Lugar.findOne({nombre:lugar.nombre})
+            let contB = await lug.contador+1;
+            await Lugar.findOneAndUpdate({nombre:lugar.nombre},{contador:contB})           
+            
+            console.log(lug)
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    actualizar()
 
 
 Lugar.find({pais: "México"})
