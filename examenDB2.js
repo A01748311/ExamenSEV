@@ -33,16 +33,17 @@ const lugar = new Lugar({
     _id:new mongoose.Types.ObjectId()
 })
 
-/*
+
 lugar.save()
     .then(()=>{
         console.log(lugar)
         console.log('Lugar creado')
     })
     .catch(err=>console.log(err))
-*/
 
-Lugar.find()
+
+
+Lugar.find({pais: "México"})
     .then(resultado=>{
         console.log(resultado)
     })
